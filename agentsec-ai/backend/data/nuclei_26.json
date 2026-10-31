@@ -1,0 +1,1 @@
+[{"title": "Cookies without HttpOnly attribute - Detect", "severity": "INFO", "affected_url": "pentest-ground.com:4280", "evidence": "javascript", "cve_id": null, "tool_found_by": "nuclei"}, {"title": "Cookies without Secure attribute - Detect", "severity": "INFO", "affected_url": "pentest-ground.com:4280", "evidence": "javascript", "cve_id": null, "tool_found_by": "nuclei"}]

@@ -1,0 +1,32 @@
+{
+  "name": "agentsec-controlled-fixture",
+  "target": "http://127.0.0.1:8765",
+  "expected_findings": [
+    {
+      "path": "/xss?q=fixture",
+      "category": "xss",
+      "expected": true
+    },
+    {
+      "path": "/secret",
+      "category": "secret",
+      "expected": true
+    },
+    {
+      "path": "/",
+      "category": "clean",
+      "expected": false
+    }
+  ],
+  "metrics": [
+    "true_positives",
+    "false_positives",
+    "false_negatives",
+    "precision",
+    "recall",
+    "scan_duration_ms",
+    "tool_coverage",
+    "fallback_dispatch_ms",
+    "duplicate_reduction"
+  ]
+}

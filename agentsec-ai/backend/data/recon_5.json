@@ -1,0 +1,27 @@
+{
+  "scan_id": 5,
+  "subdomains": [
+    "autodiscover.localhost",
+    "fndlync01.5ninesdata.localhost",
+    "naeu2.naeuinc.localhost",
+    "mail.regency.localhost",
+    "mail02.regency.localhost",
+    "autodiscover.regency.localhost",
+    "mail03.regency.localhost",
+    "tauri.localhost",
+    "mse-ca-mail.corp.mse.localhost",
+    "sbs.allsaintsschool.localhost",
+    "server02.counterintel.localhost",
+    "localhost",
+    "root@localhost",
+    "server2.hunter.localhost",
+    "172.30.2.80 10.1.1.1 gkh-xchng localhost",
+    "system.localhost",
+    "owa.regency.localhost",
+    "mail.localhost",
+    "exchvm.nwcnet.localhost",
+    "www.localhost",
+    "tools.sonoma.edu.localhost"
+  ],
+  "created_at": "2026-10-23T09:17:13.595168"
+}

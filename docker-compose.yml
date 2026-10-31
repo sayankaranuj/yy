@@ -1,0 +1,2 @@
+include:
+  - ./agentsec-ai/docker-compose.yml

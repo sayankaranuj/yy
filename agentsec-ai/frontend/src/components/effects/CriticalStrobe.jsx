@@ -1,0 +1,2 @@
+import React, { useEffect, useRef, useState } from 'react'
+export default function CriticalStrobe({ eventKey }) { const seen = useRef(null); const [active, setActive] = useState(false); useEffect(() => { if (!eventKey || seen.current === eventKey) return; seen.current = eventKey; setActive(true); const timer = setTimeout(() => setActive(false), 180); return () => clearTimeout(timer) }, [eventKey]); return active ? <div className="strobe" aria-hidden="true" /> : null }

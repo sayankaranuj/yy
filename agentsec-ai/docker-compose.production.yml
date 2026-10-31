@@ -1,0 +1,33 @@
+services:
+  backend:
+    ports: []
+
+  frontend:
+    ports: []
+
+  flower:
+    ports: []
+
+  caddy:
+    image: caddy:2.10-alpine
+    environment:
+      DOMAIN: ${DOMAIN}
+    volumes:
+      - ./docker/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      frontend:
+        condition: service_started
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - agentsec_network
+
+volumes:
+  caddy_data:
+  caddy_config:

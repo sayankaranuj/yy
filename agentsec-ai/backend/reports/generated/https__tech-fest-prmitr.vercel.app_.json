@@ -1,0 +1,11 @@
+{
+  "target": "https://tech-fest-prmitr.vercel.app/",
+  "findings": [
+    {
+      "title": "Missing security headers",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    }
+  ]
+}

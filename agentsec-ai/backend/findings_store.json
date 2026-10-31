@@ -1,0 +1,284 @@
+[
+  {
+    "id": 1,
+    "title": "Missing security headers",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 2,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 3,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 4,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 5,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 6,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 7,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 8,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 9,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 10,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 11,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 12,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 13,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 14,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 15,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 16,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 17,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 18,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 19,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 20,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 21,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 22,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 23,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 24,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 25,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": 26,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open",
+    "scan_id": 18,
+    "task_id": null,
+    "affected_url": "https://example.com/path",
+    "description": null,
+    "evidence": "header-check"
+  },
+  {
+    "id": 27,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open",
+    "scan_id": 18,
+    "task_id": null,
+    "affected_url": "https://example.com/path",
+    "description": null,
+    "evidence": "header-check"
+  },
+  {
+    "id": 28,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open",
+    "scan_id": 18,
+    "task_id": null,
+    "affected_url": "https://example.com/path",
+    "description": null,
+    "evidence": "header-check"
+  },
+  {
+    "id": 29,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open",
+    "scan_id": 18,
+    "task_id": null,
+    "affected_url": "https://example.com/path",
+    "description": null,
+    "evidence": "header-check"
+  },
+  {
+    "id": 30,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open",
+    "scan_id": 18,
+    "task_id": null,
+    "affected_url": "https://example.com/path",
+    "description": null,
+    "evidence": "header-check"
+  },
+  {
+    "id": 31,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open",
+    "scan_id": 18,
+    "task_id": null,
+    "affected_url": "https://example.com/path",
+    "description": null,
+    "evidence": "header-check"
+  },
+  {
+    "id": 32,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open",
+    "scan_id": 18,
+    "task_id": null,
+    "affected_url": "https://example.com/path",
+    "description": null,
+    "evidence": "header-check"
+  },
+  {
+    "id": 33,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open",
+    "scan_id": 18,
+    "task_id": null,
+    "affected_url": "https://example.com/path",
+    "description": null,
+    "evidence": "header-check"
+  },
+  {
+    "id": 34,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open",
+    "scan_id": 18,
+    "task_id": null,
+    "affected_url": "https://example.com/path",
+    "description": null,
+    "evidence": "header-check"
+  },
+  {
+    "id": 35,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open",
+    "scan_id": 18,
+    "task_id": null,
+    "affected_url": "https://example.com/path",
+    "description": null,
+    "evidence": "header-check"
+  },
+  {
+    "id": 36,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open",
+    "scan_id": 18,
+    "task_id": null,
+    "affected_url": "https://example.com/path",
+    "description": null,
+    "evidence": "header-check"
+  },
+  {
+    "id": 37,
+    "title": "Sample finding",
+    "severity": "medium",
+    "status": "open",
+    "scan_id": 18,
+    "task_id": null,
+    "affected_url": "https://example.com/path",
+    "description": null,
+    "evidence": "header-check"
+  }
+]

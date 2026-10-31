@@ -1,0 +1,15 @@
+Using pip 26.1.2 from C:\Users\parth\anaconda3\envs\agentsec\Lib\site-packages\pip (python 3.11)
+Requirement already satisfied: redis in C:\Users\parth\anaconda3\envs\agentsec\Lib\site-packages (3.5.3)
+Collecting redis
+  Obtaining dependency information for redis from https://files.pythonhosted.org/packages/66/9d/c5731f6e3608663d4d3656fd8d3aecee8b509c3082818f5a13eae925baea/redis-8.1.0-py3-none-any.whl.metadata
+  Downloading redis-8.1.0-py3-none-any.whl.metadata (16 kB)
+Downloading redis-8.1.0-py3-none-any.whl (560 kB)
+   ---------------------------------------- 560.6/560.6 kB 1.4 MB/s  0:00:00
+Installing collected packages: redis
+  Attempting uninstall: redis
+    Found existing installation: redis 3.5.3
+    Uninstalling redis-3.5.3:
+      Removing file or directory c:\users\parth\anaconda3\envs\agentsec\lib\site-packages\redis-3.5.3.dist-info\
+      Removing file or directory c:\users\parth\anaconda3\envs\agentsec\lib\site-packages\redis\
+      Successfully uninstalled redis-3.5.3
+Successfully installed redis-8.1.0

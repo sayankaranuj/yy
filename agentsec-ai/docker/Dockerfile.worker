@@ -1,0 +1,113 @@
+FROM golang:1.23-bookworm AS tools
+
+ARG SUBFINDER_VERSION=v2.6.7
+ARG AMASS_VERSION=v4.2.0
+ARG HTTPX_VERSION=v1.6.9
+ARG NUCLEI_VERSION=v3.3.10
+ARG NAABU_VERSION=v2.3.1
+ARG KATANA_VERSION=v1.1.2
+ARG RUSTSCAN_VERSION=2.4.1
+ARG ASSETFINDER_VERSION=v0.1.1
+ARG DNSX_VERSION=v1.2.1
+ARG GAU_VERSION=v2.2.4
+ARG FFUF_VERSION=v2.1.0
+ARG DALFOX_VERSION=v2.9.3
+ARG WAYBACKURLS_VERSION=v0.1.0
+ARG TRUFFLEHOG_VERSION=v3.88.0
+ARG FINDOMAIN_VERSION=10.0.1
+
+ENV CGO_ENABLED=1
+RUN apt-get update && apt-get install -y --no-install-recommends libpcap-dev curl unzip git \
+ && rm -rf /var/lib/apt/lists/*
+RUN go install github.com/projectdiscovery/subfinder/v2/cmd/subfinder@${SUBFINDER_VERSION} \
+ && go install github.com/owasp-amass/amass/v4/cmd/amass@${AMASS_VERSION} \
+ && go install github.com/projectdiscovery/httpx/cmd/httpx@${HTTPX_VERSION} \
+ && go install github.com/projectdiscovery/nuclei/v3/cmd/nuclei@${NUCLEI_VERSION} \
+ && go install github.com/projectdiscovery/naabu/v2/cmd/naabu@${NAABU_VERSION} \
+ && go install github.com/projectdiscovery/katana/cmd/katana@${KATANA_VERSION}
+RUN go install github.com/tomnomnom/assetfinder@${ASSETFINDER_VERSION} \
+ && go install github.com/projectdiscovery/dnsx/cmd/dnsx@${DNSX_VERSION} \
+ && go install github.com/lc/gau/v2/cmd/gau@${GAU_VERSION} \
+ && go install github.com/ffuf/ffuf/v2@${FFUF_VERSION} \
+ && go install github.com/hahwul/dalfox/v2@${DALFOX_VERSION} \
+ && go install github.com/tomnomnom/waybackurls@${WAYBACKURLS_VERSION}
+RUN git clone --depth 1 --branch ${TRUFFLEHOG_VERSION} \
+    https://github.com/trufflesecurity/trufflehog.git /tmp/trufflehog \
+ && (cd /tmp/trufflehog && go build -o /go/bin/trufflehog .) \
+ && rm -rf /tmp/trufflehog
+RUN curl --fail --silent --show-error --location \
+    "https://sourceforge.net/projects/rustscan.mirror/files/${RUSTSCAN_VERSION}/x86_64-linux-rustscan.tar.gz.1.zip/download" \
+    --output /tmp/rustscan.zip \
+ && unzip -q /tmp/rustscan.zip -d /tmp/rustscan \
+ && tar -xzf /tmp/rustscan/x86_64-linux-rustscan.tar.gz -C /go/bin \
+ && rm -rf /tmp/rustscan.zip /tmp/rustscan
+RUN curl --fail --silent --show-error --location \
+    "https://github.com/Findomain/Findomain/releases/download/${FINDOMAIN_VERSION}/findomain-linux.zip" \
+    --output /tmp/findomain.zip \
+ && echo "7a1b90aaf291868e0fb2d643cefa238caddb7aa932b2355f0e0ce8b47a4b5083  /tmp/findomain.zip" | sha256sum -c - \
+ && unzip -q /tmp/findomain.zip -d /tmp/findomain \
+ && install -m 0755 /tmp/findomain/findomain /go/bin/findomain \
+ && rm -rf /tmp/findomain.zip /tmp/findomain
+
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
+
+RUN useradd --create-home appuser || true
+WORKDIR /app
+COPY docker/wordlists /opt/wordlists
+RUN chmod -R a+rX /opt/wordlists
+
+# Install system packages often required by security tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+	curl wget git nmap sqlmap whois netcat-openbsd whatweb dirb ruby-full build-essential \
+ && rm -rf /var/lib/apt/lists/* \
+ && gem install --no-document wpscan
+
+COPY docker/requirements.python-tools.txt /opt/agentsec-tools/requirements.python-tools.txt
+
+RUN mkdir -p /opt/agentsec-tools \
+ && git clone --depth 1 https://github.com/initstring/cloud_enum.git /opt/agentsec-tools/cloud_enum \
+ && git clone --depth 1 https://github.com/s0md3v/Corsy.git /opt/agentsec-tools/Corsy \
+ && git clone --depth 1 https://github.com/GerbenJavado/LinkFinder.git /opt/agentsec-tools/LinkFinder \
+ && git clone --depth 1 https://github.com/m4ll0k/SecretFinder.git /opt/agentsec-tools/SecretFinder \
+ && git clone --depth 1 https://github.com/epinna/tplmap.git /opt/agentsec-tools/tplmap \
+ && python -m venv /opt/agentsec-tools/venv \
+ && /opt/agentsec-tools/venv/bin/pip install --no-cache-dir \
+    -r /opt/agentsec-tools/requirements.python-tools.txt \
+ && /opt/agentsec-tools/venv/bin/pip install --no-cache-dir /opt/agentsec-tools/cloud_enum
+
+# Copy requirements and install
+COPY requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
+COPY --from=tools /go/bin/subfinder /usr/local/bin/subfinder
+COPY --from=tools /go/bin/amass /usr/local/bin/amass
+COPY --from=tools /go/bin/httpx /usr/local/bin/httpx
+COPY --from=tools /go/bin/nuclei /usr/local/bin/nuclei
+COPY --from=tools /go/bin/naabu /usr/local/bin/naabu
+COPY --from=tools /go/bin/katana /usr/local/bin/katana
+COPY --from=tools /go/bin/rustscan /usr/local/bin/rustscan
+COPY --from=tools /go/bin/assetfinder /usr/local/bin/assetfinder
+COPY --from=tools /go/bin/dnsx /usr/local/bin/dnsx
+COPY --from=tools /go/bin/gau /usr/local/bin/gau
+COPY --from=tools /go/bin/ffuf /usr/local/bin/ffuf
+COPY --from=tools /go/bin/dalfox /usr/local/bin/dalfox
+COPY --from=tools /go/bin/waybackurls /usr/local/bin/waybackurls
+COPY --from=tools /go/bin/trufflehog /usr/local/bin/trufflehog
+COPY --from=tools /go/bin/findomain /usr/local/bin/findomain
+
+# Copy backend code
+COPY backend /app/backend
+# Copy entrypoint and healthcheck utilities
+COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY docker/healthcheck.sh /usr/local/bin/healthcheck.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh /usr/local/bin/healthcheck.sh
+RUN chown -R appuser:appuser /app
+
+USER appuser
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["/bin/sh", "-c", "celery -A backend.workers.celery_app worker --loglevel=info --queues=${CELERY_QUEUE:-default}"]

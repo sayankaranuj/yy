@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+docker/data/
+postgres_data/
+redis_data/
+reports/output/
+*.log
+.vscode/
+.idea/
+node_modules/
+frontend/dist/
+frontend/build/
+tools/output/
+scan_results/
+
+# Dockerfile artifacts
+Dockerfile*

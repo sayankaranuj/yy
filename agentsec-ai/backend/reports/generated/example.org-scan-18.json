@@ -1,0 +1,78 @@
+{
+  "target": "example.org",
+  "scan_id": 18,
+  "findings": [
+    {
+      "id": 26,
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "scan_id": 18,
+      "task_id": null,
+      "affected_url": "https://example.com/path",
+      "description": null,
+      "evidence": "header-check",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "id": 27,
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "scan_id": 18,
+      "task_id": null,
+      "affected_url": "https://example.com/path",
+      "description": null,
+      "evidence": "header-check",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "id": 28,
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "scan_id": 18,
+      "task_id": null,
+      "affected_url": "https://example.com/path",
+      "description": null,
+      "evidence": "header-check",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "id": 29,
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "scan_id": 18,
+      "task_id": null,
+      "affected_url": "https://example.com/path",
+      "description": null,
+      "evidence": "header-check",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "id": 30,
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "scan_id": 18,
+      "task_id": null,
+      "affected_url": "https://example.com/path",
+      "description": null,
+      "evidence": "header-check",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "id": 31,
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "scan_id": 18,
+      "task_id": null,
+      "affected_url": "https://example.com/path",
+      "description": null,
+      "evidence": "header-check",
+      "owasp": "A05:2021-Security Misconfiguration"
+    }
+  ]
+}

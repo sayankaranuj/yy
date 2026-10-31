@@ -1,0 +1,1 @@
+[{"title": "Nuclei: Synthetic CVE-TEST", "severity": "HIGH", "cve_id": "CVE-TEST-0001", "affected_url": "http://example.com/54", "evidence": "nuclei evidence", "tool_found_by": "nuclei"}]

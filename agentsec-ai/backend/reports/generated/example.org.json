@@ -1,0 +1,155 @@
+{
+  "target": "example.org",
+  "findings": [
+    {
+      "title": "Missing security headers",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    },
+    {
+      "title": "Sample finding",
+      "severity": "medium",
+      "status": "open",
+      "owasp": "A05:2021-Security Misconfiguration"
+    }
+  ]
+}

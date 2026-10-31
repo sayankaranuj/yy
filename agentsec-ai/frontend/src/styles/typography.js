@@ -1,0 +1,2 @@
+export const TYPE = { display: 'font-headline uppercase', headline: 'font-headline uppercase tracking-wide', body: 'font-body', data: 'font-mono', badge: 'font-mono uppercase text-xs' }
+export const SEVERITY_CONFIG = { CRITICAL: { color: 'critical', label: 'CRITICAL' }, HIGH: { color: 'high', label: 'HIGH' }, MEDIUM: { color: 'medium', label: 'MEDIUM' }, LOW: { color: 'low', label: 'LOW' }, INFO: { color: 'info', label: 'INFO' } }

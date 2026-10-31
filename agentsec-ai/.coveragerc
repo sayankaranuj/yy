@@ -1,0 +1,20 @@
+[run]
+source = backend
+omit =
+    */tests/*
+    */__pycache__/*
+    */alembic/versions/*
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    def __str__
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    pass
+    TYPE_CHECKING
+
+[html]
+directory = coverage_report
+title = AgentSec AI Coverage Report

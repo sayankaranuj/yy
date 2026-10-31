@@ -1,0 +1,20 @@
+services:
+  test_runner:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    environment:
+      APP_ENV: testing
+      APP_DEBUG: "True"
+      SECRET_KEY: test-secret-key
+      JWT_SECRET_KEY: test-jwt-secret-key
+      STORAGE_BACKEND: json
+      AGENTSEC_SCAN_STORE: /app/tests/test_scan_store.json
+      AGENTSEC_FINDINGS_STORE: /app/tests/test_findings_store.json
+    command: >-
+      pytest tests/ -m "not live and not slow and not e2e"
+      --cov=backend --cov-report=term-missing --cov-report=html:coverage_report
+    volumes:
+      - ./backend:/app/backend
+      - ./tests:/app/tests
+      - ./coverage_report:/app/coverage_report

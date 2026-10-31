@@ -1,0 +1,182 @@
+x-service-env: &service-env
+  DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT}/${POSTGRES_DB}
+  POSTGRES_HOST: postgres
+  REDIS_URL: redis://redis:${REDIS_PORT}/0
+  REDIS_HOST: redis
+  CELERY_BROKER_URL: redis://redis:${REDIS_PORT}/0
+  CELERY_RESULT_BACKEND: redis://redis:${REDIS_PORT}/0
+  STORAGE_BACKEND: postgres
+
+services:
+  postgres:
+    image: postgres:16
+    env_file: .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - agentsec_network
+
+  redis:
+    image: redis:7-alpine
+    env_file: .env
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - agentsec_network
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    env_file: .env
+    environment: *service-env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app/backend
+      - ./docker/wordlists:/opt/wordlists:ro
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    networks:
+      - agentsec_network
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/healthcheck.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "5173:80"
+    restart: unless-stopped
+    networks:
+      - agentsec_network
+
+  worker_recon:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.worker
+    env_file: .env
+    environment: *service-env
+    command: ["/bin/sh", "-c", "celery -A backend.workers.celery_app worker --loglevel=info --queues=recon_queue"]
+    volumes:
+      - ./backend:/app/backend
+      - ./docker/wordlists:/opt/wordlists:ro
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - agentsec_network
+
+  worker_enum:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.worker
+    env_file: .env
+    environment: *service-env
+    command: ["/bin/sh", "-c", "celery -A backend.workers.celery_app worker --loglevel=info --queues=enum_queue"]
+    volumes:
+      - ./backend:/app/backend
+      - ./docker/wordlists:/opt/wordlists:ro
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - agentsec_network
+
+  worker_vuln:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.worker
+    env_file: .env
+    environment: *service-env
+    command: ["/bin/sh", "-c", "celery -A backend.workers.celery_app worker --loglevel=info --queues=vuln_queue"]
+    volumes:
+      - ./backend:/app/backend
+      - ./docker/wordlists:/opt/wordlists:ro
+      - ./docker/nuclei-templates:/opt/nuclei-templates:ro
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - agentsec_network
+
+  worker_secrets:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.worker
+    env_file: .env
+    environment: *service-env
+    command: ["/bin/sh", "-c", "celery -A backend.workers.celery_app worker --loglevel=info --queues=secrets_queue"]
+    volumes:
+      - ./backend:/app/backend
+      - ./docker/wordlists:/opt/wordlists:ro
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - agentsec_network
+
+  worker_report:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.worker
+    env_file: .env
+    environment: *service-env
+    command: ["/bin/sh", "-c", "celery -A backend.workers.celery_app worker --loglevel=info --queues=report_queue"]
+    volumes:
+      - ./backend:/app/backend
+      - ./docker/wordlists:/opt/wordlists:ro
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - agentsec_network
+
+  flower:
+    image: mher/flower:latest
+    env_file: .env
+    environment: *service-env
+    command: ["celery", "--broker=redis://redis:${REDIS_PORT}/0", "flower", "--basic_auth=${FLOWER_BASIC_AUTH}"]
+    ports:
+      - "127.0.0.1:5555:5555"
+    depends_on:
+      - redis
+    restart: unless-stopped
+    networks:
+      - agentsec_network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  agentsec_network:
+    driver: bridge

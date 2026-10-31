@@ -1,0 +1,32 @@
+{
+  "target": "https://mitra.ac.in/",
+  "scan_id": 24,
+  "findings": [
+    {
+      "id": 4,
+      "title": "Microsoft Azure Domain Tenant ID - Detect",
+      "severity": "info",
+      "status": "open",
+      "scan_id": 24,
+      "task_id": null,
+      "affected_url": "https://login.microsoftonline.com:443/mitra.ac.in/v2.0/.well-known/openid-configuration",
+      "description": null,
+      "evidence": "curl -X 'GET' -d '' -H 'Host: login.microsoftonline.com' -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0' 'https://login.microsoftonline.com:443/mitra.ac.in/v2.0/.well-known/openid-configuration'",
+      "source_tool": null,
+      "category": null,
+      "confidence": null,
+      "asset": "https://login.microsoftonline.com:443/mitra.ac.in/v2.0/.well-known/openid-configuration",
+      "parameter": null,
+      "remediation": null,
+      "cwe": null,
+      "owasp_category": null,
+      "verification_state": "unverified",
+      "analyst_notes": null,
+      "assignee": null,
+      "due_date": null,
+      "risk_acceptance": false,
+      "dedup_key": "0855afd2ac7776e8faaec6ed8aba2f4f9285c24fba16a0b06dda575fa1e1d183",
+      "owasp": "A09:2021-Security Logging and Monitoring Failures"
+    }
+  ]
+}

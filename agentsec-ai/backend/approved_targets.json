@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "target": "tech-fest-prmitr.vercel.app",
+    "enabled": false,
+    "verification_method": "http",
+    "verification_token": "L6fpLltLiyXxbtorKFOBv0HtJZ0j3Kj-_KRazEBVvao",
+    "ownership_verified": false,
+    "verified_at": null
+  },
+  {
+    "id": 2,
+    "target": "localhost:5174",
+    "enabled": false,
+    "verification_method": "http",
+    "verification_token": "dN9nkUMoPfz94wfGnC20rBjixKvCeG3BbLh7O1mPo0c",
+    "ownership_verified": true,
+    "verified_at": "2026-10-26T15:58:10.953679+00:00"
+  },
+  {
+    "id": 3,
+    "target": "localhost",
+    "enabled": true,
+    "verification_method": "http",
+    "verification_token": "rnoYJ5cgXAOwGVUvEGUritrlOXpBPb5NSiqtnX8q11A",
+    "ownership_verified": true,
+    "verified_at": "2026-10-08T20:52:08.004588+00:00",
+    "approved_by": "development-local",
+    "reason": "Development-local authorized target"
+  },
+  {
+    "id": 4,
+    "target": "pentest-ground.com",
+    "enabled": false,
+    "verification_method": "http",
+    "verification_token": "TuiIbtQLOvuJrhjRKlr0QfmZXdiN4ZaoRXJ5GR1OoY4",
+    "ownership_verified": false,
+    "verified_at": null
+  },
+  {
+    "id": 5,
+    "target": "github.com/sayankaranuj/soc-x",
+    "enabled": false,
+    "verification_method": "http",
+    "verification_token": "Ta1M88aVTeCDHoly-F19oJo6VnVscss1jLJq6nk743E",
+    "ownership_verified": false,
+    "verified_at": null
+  },
+  {
+    "id": 6,
+    "target": "pentest-ground.com:4280",
+    "enabled": false,
+    "verification_method": "dns_txt",
+    "verification_token": "ljVN6PSE7uoPnqhcwIcCUAx4z2s_wH6evWKwYp7AFvI",
+    "ownership_verified": false,
+    "verified_at": null
+  }
+]

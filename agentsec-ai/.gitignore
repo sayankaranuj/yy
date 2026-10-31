@@ -45,3 +45,70 @@ frontend/build/
 # Tool outputs
 tools/output/
 scan_results/
+
+# Environment variables and secrets
+
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+credentials.json
+
+# Python cache
+
+**pycache**/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+
+.venv/
+venv/
+env/
+
+# IDE and editor
+
+.vscode/
+.idea/
+
+# Logs
+
+*.log
+logs/
+
+# Database files
+
+*.db
+*.sqlite3
+
+# Temporary files
+
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+# Build and distribution
+
+build/
+dist/
+*.egg-info/
+
+# Testing and coverage
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node.js (if using React)
+
+node_modules/
+npm-debug.log*
+dist/
+
+# OS files
+
+desktop.ini
+.DS_Store
